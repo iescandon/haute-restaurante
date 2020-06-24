@@ -1,0 +1,37 @@
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)),
+        url(./restaurant.jpg);
+    background-size: cover;
+    height: 350px;
+    background-position: 20%;
+    color: white;
+    font-family: "Satisfy", cursive;
+}
+
+.display {
+    font-size: 80px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.lead {
+    font-family: "Montserrat", sans-serif;
+    padding-bottom: 30px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.btn {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-left: 10px;
+}

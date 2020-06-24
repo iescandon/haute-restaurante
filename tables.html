@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hot Restaurant</title>
+        <title>Tables</title>
         <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -18,7 +18,7 @@
             href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Sacramento&family=Satisfy&family=Syncopate:wght@400;700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./public/style.css" />
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid">
@@ -48,19 +48,19 @@
                 <div class="card-header">
                     <h4>Current Reservations</h4>
                 </div>
-                <div class="card-body"></div>
+                <div class="card-body tables-div"></div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <h4>Waitlist</h4>
                 </div>
-                <div class="card-body"></div>
+                <div class="card-body waitlist-div"></div>
             </div>
-        </div>
-        <div class="row mt-5">
-            <a href="/api/tables">API Table Link</a>
-            |
-            <a href="/api/waitlist">API Wait List</a>
+            <div class="row mt-5">
+                <a href="/api/tables">API Table Link</a>
+                |
+                <a href="/api/waitlist">API Wait List</a>
+            </div>
         </div>
         <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -82,20 +82,52 @@
 <script type="text/javascript">
     function renderInfo() {
         $.get("/api/tables", function (data) {
-            console.log(data);
-            var reservation = $("<div>");
-            var list = $("<ul>");
-            var name = $("<li>");
-            var phone = $("<li>");
-            var email = $("<li>");
-            var time = $("<li>");
-            if (data) {
-                name.text(`Name: ${data.name}`);
-                phone.text(`Phone Number: ${data.number}`);
-                email.text(`E-Mail: ${data.email}`);
-                time.text(`Reservation Time: ${data.reservationTime}`);
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    var reservation = $("<div>");
+                    var list = $("<ul>");
+                    var name = $("<li>");
+                    var phone = $("<li>");
+                    var email = $("<li>");
+                    var time = $("<li>");
+                    name.text(`Name: ${data[i].name}`);
+                    phone.text(`Phone Number: ${data[i].number}`);
+                    email.text(`E-Mail: ${data[i].email}`);
+                    time.text(`Reservation Time: ${data[i].reservationTime}`);
+                    reservation.append(list, name, phone, email, time);
+                    $(".tables-div").append(reservation);
+                }
             } else {
-                name.text("No reservation found");
+                var reservation = $("<div>");
+                var name = $("<li>");
+                name.text("No reservations found");
+                reservation.append(list, name, phone, email, time);
+                $(".tables-div").append(reservation);
+            }
+        });
+
+        $.get("/api/waitlist", function (data) {
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    var reservation = $("<div>");
+                    var list = $("<ul>");
+                    var name = $("<li>");
+                    var phone = $("<li>");
+                    var email = $("<li>");
+                    var time = $("<li>");
+                    name.text(`Name: ${data[i].name}`);
+                    phone.text(`Phone Number: ${data[i].number}`);
+                    email.text(`E-Mail: ${data[i].email}`);
+                    time.text(`Reservation Time: ${data[i].reservationTime}`);
+                    reservation.append(list, name, phone, email, time);
+                    $(".waitlist-div").append(reservation);
+                }
+            } else {
+                var reservation = $("<div>");
+                var name = $("<li>");
+                name.text("No reservations found");
+                reservation.append(list, name, phone, email, time);
+                $(".waitlist-div").append(reservation);
             }
         });
     }
