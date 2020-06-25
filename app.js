@@ -13,7 +13,7 @@ const tables = [
         name: "John Doe",
         number: "222-222-2222",
         email: "john@test.com",
-        reservationTime: 8,
+        reservationTime: "8:00 pm",
     },
 ];
 
@@ -22,7 +22,7 @@ const waitlist = [
         name: "Jane Doe",
         number: "222-222-2222",
         email: "jane@test.com",
-        reservationTime: 10,
+        reservationTime: "10:00 am",
     },
 ];
 
@@ -49,10 +49,10 @@ app.get("/api/waitlist", function (req, res) {
 app.post("/api/tables", function (req, res) {
     var newReservation = req.body;
 
-    if (tables.length > 5) {
-        waitlist.push(newReservation);
-    } else {
+    if (tables.length < 5) {
         tables.push(newReservation);
+    } else {
+        waitlist.push(newReservation);
     }
 
     console.log(newReservation);

@@ -8,6 +8,10 @@ li {
     padding: 0;
 }
 
+h4 {
+    margin-bottom: 0;
+}
+
 .jumbotron {
     background-image: linear-gradient(
             rgba(0, 0, 0, 0.3),
@@ -41,5 +45,5 @@ li {
 }
 
 .bottom-li {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }

@@ -50,6 +50,7 @@
                 </div>
                 <div class="card-body tables-div"></div>
             </div>
+        </br>
             <div class="card">
                 <div class="card-header">
                     <h4>Waitlist</h4>
@@ -120,6 +121,7 @@
                     phone.text(`Phone Number: ${data[i].number}`);
                     email.text(`E-Mail: ${data[i].email}`);
                     time.text(`Reservation Time: ${data[i].reservationTime}`);
+                    time.addClass("bottom-li");
                     reservation.append(list, name, phone, email, time);
                     $(".waitlist-div").append(reservation);
                 }

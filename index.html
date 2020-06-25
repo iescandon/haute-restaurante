@@ -25,8 +25,8 @@
             <div class="container">
                 <h1 class="display text-center">Haute Restaurante</h1>
                 <p class="lead text-center">
-                    Very fancy food in small portions on a big white plate for
-                    twice the price
+                    Reserve your table now! Only
+                    <span class="table-number">5 tables</span> left!
                 </p>
                 <div class="buttons text-center">
                     <a
@@ -66,6 +66,22 @@
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             crossorigin="anonymous"
         ></script>
-        <script></script>
+        <script type="text/javascript">
+            function renderInfo() {
+                $.get("/api/tables", function (data) {
+                    var availableTables = 5 - data.length;
+                    if (availableTables <= 0) {
+                        $(".lead").text(
+                            "No tables available! Make a reservation to be added to the waitlist!"
+                        );
+                    } else if (availableTables === 1) {
+                        $(".table-number").text(`${availableTables} table`);
+                    } else {
+                        $(".table-number").text(`${availableTables} tables`);
+                    }
+                });
+            }
+            renderInfo();
+        </script>
     </body>
 </html>
