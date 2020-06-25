@@ -9,7 +9,11 @@ li {
 }
 
 .jumbotron {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)),
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.3)
+        ),
         url(./restaurant.jpg);
     background-size: cover;
     height: 350px;
@@ -26,7 +30,7 @@ li {
 .lead {
     font-family: "Montserrat", sans-serif;
     padding-bottom: 30px;
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 2px 2px 5px black;
 }
 
 .btn {
@@ -34,4 +38,8 @@ li {
     font-size: 14px;
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.bottom-li {
+    margin-bottom: 30px;
 }
